@@ -1,7 +1,7 @@
 .pixel {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     background-size: contain;
 }
 
@@ -33,13 +33,16 @@
     background-image: url("https://www.fractalcamo.com/uploads/5/9/0/2/5902948/s189772745713394276_p3856_i147_w750.jpeg");
 }
 
+.rock {
+    background-image: url("https://lh3.googleusercontent.com/w_UnQNZjtow-tW8gAXVJgDHximsz4zKJmiFbPhtlDmaO3ZoN__qaqqUBaO6OQrAv5O0pha86wBnpU_VRUty0xXE")
+}
+
 .sidebar {
     position: absolute;
-    border: 1px solid black;
     text-align: center;
-    height: 1000px;
+    height: 840px;
     width: 150px;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: black;
     color: white;
 }
 
@@ -73,4 +76,15 @@
     top: 40%;
     background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_gamepedia/8/81/Iron_Axe.png?version=9d808b9c6ea7c476c8e17d8acfd1bb8d);
     background-size: cover;
+  }
+
+  .tile {
+    position: absolute;
+    border: 1px solid white;
+    height: 50px;
+    width: 50px;
+    margin: 32%;
+    top: 50%;
+    cursor: pointer;
+    background-size: contain;
   }
