@@ -1,0 +1,76 @@
+.pixel {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+}
+
+#world {
+    position: relative;
+}
+
+.sky {
+    background-color: skyblue;
+}
+
+.cloud {
+    background-color: whitesmoke;
+}
+
+.tree {
+    background-image: url("https://i.imgur.com/hvRNx.png");
+}
+
+.leaf {
+    background-image: url("https://i.pinimg.com/originals/4e/6c/39/4e6c395ecf5937912114f21606eac9ab.png");
+}
+
+.grass {
+    background-image: url("https://lh3.googleusercontent.com/2ZdPa8KBDybnUudpc9yRmaCU3DYHH4SL7gxRTPwyk1oCn_1xCzntDLkb02MChMipFu-N3BzNAtXP2BCiwOl9WgM=s400");
+}
+
+.dirt {
+    background-image: url("https://www.fractalcamo.com/uploads/5/9/0/2/5902948/s189772745713394276_p3856_i147_w750.jpeg");
+}
+
+.sidebar {
+    position: absolute;
+    border: 1px solid black;
+    text-align: center;
+    height: 1000px;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.tool {
+    position: absolute;
+    border: 1px solid white;
+    height: 70px;
+    width: 70px;
+    margin: 25%;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .tool:hover {
+      background-color: blue;
+  }
+  
+  .tool.shovel {
+    top: 20%;
+    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_zh_gamepedia/7/76/Iron_Shovel.png?version=0e9fe4a04817e009711ff80b1df25953);
+    background-size: cover;
+  }
+  .tool.pickAxe {
+    top: 30%;
+    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_gamepedia/a/a2/Iron_Pickaxe.png?version=d5f8fb4620feac3dd839879024d55442);
+    background-size: cover;
+  }
+  .tool.axe {
+    top: 40%;
+    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_gamepedia/8/81/Iron_Axe.png?version=9d808b9c6ea7c476c8e17d8acfd1bb8d);
+    background-size: cover;
+  }
