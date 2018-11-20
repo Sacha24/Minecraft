@@ -23,15 +23,11 @@ function generateWorld (world) {
     for (var i = 0; i < world.length; i++) {
         $("#world").append("<div class='row justify-content-center'>");
         for (var j = 0; j < world[0].length; j++) {
-            $(".row:nth-child("+ i + ")").append(`<div class='pixel ${world[i][j]}'>`);
+            $(".row:nth-child("+ i + ")").append("<div class='pixel " + world[i][j] + "'>");
         }
     }
 }
-
-function start() {
-    generateWorld(world);
-}
-start();
+generateWorld(world);
 
 function pixelBorder(){
     var square = event.currentTarget;
@@ -52,8 +48,10 @@ function shovel (){
     square.classList.replace("dirt", "sky")
 }
 $(".tool.shovel").on("click", function (){
-    $(".pixel.dirt").on("click", lastElement)
-    $(".pixel.grass").on("click", lastElement)
+    $(".pixel.dirt").on("click", getLastElement)
+    $(".pixel.grass").on("click", getLastElement)
+    $(".pixel.tree").off("click", getLastElement)
+    $(".pixel.leaf").off("click", getLastElement)
     $(".tool.shovel").css("background-color","blue")
     $(".tool.pickAxe").css("background-color","black")
     $(".tool.axe").css("background-color","black")
@@ -69,7 +67,9 @@ function pickAxe(){
     square.classList.replace("rock", "sky")
 }
 $(".tool.pickAxe").on("click", function (){
-    $(".pixel.rock").on("click", lastElement)
+    $(".pixel.rock").on("click", getLastElement)
+    $(".pixel.dirt").off("click", getLastElement)
+    $(".pixel.grass").off("click", getLastElement)
     $(".tool.shovel").css("background-color","black")
     $(".tool.pickAxe").css("background-color","blue")
     $(".tool.axe").css("background-color","black")
@@ -86,8 +86,11 @@ function Axe(){
     square.classList.replace("leaf", "sky")
 }
 $(".tool.axe").on("click", function (){
-    $(".pixel.tree").on("click", lastElement)
-    $(".pixel.leaf").on("click", lastElement)
+    $(".pixel.tree").on("click", getLastElement)
+    $(".pixel.leaf").on("click", getLastElement)
+    $(".pixel.dirt").off("click", getLastElement)
+    $(".pixel.grass").off("click", getLastElement)
+    $(".pixel.rock").off("click", getLastElement)
     $(".tool.axe").css("background-color","blue")
     $(".tool.shovel").css("background-color","black")
     $(".tool.pickAxe").css("background-color","black")
@@ -99,23 +102,31 @@ $(".tool.axe").on("click", function (){
 })
 
 var tile = [];
-function lastElement() {
+function getLastElement() {
     var square = event.currentTarget;
     tile.push(square.className);
     var last = tile[tile.length-1].replace("pixel ","");
-    var beforeLast = tile[tile.length-2].replace("pixel ","");
-    $(".tile").removeClass(".tile "+ beforeLast).addClass(last)
+    $(".tile").removeClass().addClass("tile " + last)
 }
 
-function useLastElement(){
+function useLastElement() {
     var square = event.currentTarget;
     var last = tile[tile.length-1].replace("pixel ","");
-    square.classList.replace("sky", last)
+    square.classList.replace("sky", last); 
+    $(".tile."+last).removeClass(last)
+    $(".pixel.sky").off("click", useLastElement)
 }
 $(".tile").on("click", function(){
-/*     $(".pixel").off("click", lastElement) */
     $(".pixel.sky").on("click", useLastElement)
+    $(".pixel").off("click", getLastElement)
+    $(".pixel").off("click", shovel)
+    $(".pixel").off("click", Axe)
+    $(".pixel").off("click", pickAxe)
+    $(".tool.shovel").css("background-color","black")
+    $(".tool.axe").css("background-color","black")
+    $(".tool.pickAxe").css("background-color","black")
 })
+
 
 
 
