@@ -1,3 +1,32 @@
+body{
+    background-image: url(https://i.ytimg.com/vi/i6t6RXyOgQ8/maxresdefault.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 8px; 
+}
+
+#world{
+    display: none;
+}
+
+button{
+    position: relative;
+    cursor: pointer;
+    font-size: 50px;
+    margin: 20px;
+    left: 30%;
+    top: 200px;
+    border-radius: 20px;
+}
+
+/* button:hover{
+    background-color:
+} */
+
+button:active{
+    outline: none;
+}
+
 .pixel {
     position: relative;
     height: 70px;
@@ -5,16 +34,16 @@
     background-size: contain;
 }
 
-#world {
-    position: relative;
+.pixel:hover{
+    border: 1px solid white;
 }
 
 .sky {
-    background-color: skyblue;
+    background-color: #9E84FF;
 }
 
 .cloud {
-    background-color: whitesmoke;
+    background-color: wheat;
 }
 
 .tree {
@@ -44,6 +73,7 @@
     width: 150px;
     background-color: black;
     color: white;
+    z-index: 1;
 }
 
 .tool {
@@ -52,29 +82,30 @@
     height: 70px;
     width: 70px;
     margin: 25%;
-    color: white;
+    color: black;
+    background-color: white;
     text-align: center;
     cursor: pointer;
     font-weight: bold;
   }
   
   .tool:hover {
-      background-color: blue;
+      background-color: green;
   }
   
   .tool.shovel {
     top: 20%;
-    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_zh_gamepedia/7/76/Iron_Shovel.png?version=0e9fe4a04817e009711ff80b1df25953);
+    background-image: url(https://cdn3.iconfinder.com/data/icons/minecraft-icons/512/Iron_Shovel.png);
     background-size: cover;
   }
   .tool.pickAxe {
     top: 30%;
-    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_gamepedia/a/a2/Iron_Pickaxe.png?version=d5f8fb4620feac3dd839879024d55442);
+    background-image: url(http://icons.iconarchive.com/icons/chrisl21/minecraft/128/Stone-Hoe-icon.png);
     background-size: cover;
   }
   .tool.axe {
     top: 40%;
-    background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/minecraft_gamepedia/8/81/Iron_Axe.png?version=9d808b9c6ea7c476c8e17d8acfd1bb8d);
+    background-image: url(https://cdn3.iconfinder.com/data/icons/minecraft-icons/512/Iron_Axe.png);
     background-size: cover;
   }
 
