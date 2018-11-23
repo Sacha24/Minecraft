@@ -9,15 +9,25 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/Minecraft2.css"/>
   </head>
   <body>
-        <button id="startGame">Start Game</button>
-        <button>Tutorial</button>
-        <div id="world">
-            <div class="sidebar">
-                <div class="tool shovel">Shovel</div>
-                    <div class="tool pickAxe">Pick Axe</div>
-                    <div class="tool axe">Axe</div>
-                    <div class="tile"></div>
-                </div>
+    <button id="startGame">Start Game</button>
+    <button id="tutorial" >Tutorial</button>
+      <div class="tutoContent">Press "Start Game" <br><br>
+          Pick a tool from the menu to remove the corresponding 
+          block and build whatever you want ! 
+          <button class="closeTuto">Close</button>
+      </div>
+    <div id="world">
+      <div class="sidebar">
+          <div class="tool shovel">Shovel</div>
+              <div class="tool pickAxe">Pick Axe</div>
+              <div class="tool axe">Axe</div>
+              <div class="tile"></div>
+              <div class="inventory dirt">0</div>
+              <div class="inventory grass">0</div>
+              <div class="inventory leaf">0</div>
+              <div class="inventory tree">0</div>
+              <div class="inventory rock">0</div>
+      </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

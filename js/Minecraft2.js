@@ -7,11 +7,11 @@ world = [
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "rock", "rock", "sky", "tree", "sky", "sky", "rock", "sky", "sky", "sky",],
+    ["sky", "rock", "rock", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
@@ -32,43 +32,60 @@ function startGame(){
 }
 $("#startGame").on("click", startGame)
 
+function openTutorial() {
+    $(".tutoContent").css("display","block")
+    $(".closeTuto").css("display","block")
+}
+$("#tutorial").on("click",openTutorial)
+
+function closeTutorial() {
+    $(".tutoContent").css("display","none")
+    $(".closeTuto").css("display","none")
+}
+$(".closeTuto").on("click",closeTutorial)
+
 var toolSelected = ""  // get the tool I selected
 function pickTool(){
-    $(".tool").css("background-color", "black")
+    useTile = false;
+    $(".pixel").off("click", useInventory)
+    $(".tool").css("background-color", "white")
     toolSelected = event.target;
-    toolSelected.style.backgroundColor = "blue"
+    toolSelected.style.backgroundColor = "green"
     toolSelected = event.target.classList[1];
+    $(".pixel").on("click", playWithElements);
 }
 $(".tool").on("click", pickTool)
 
 
 var useTile = false;
 var tile = [];  // stock all the elements I took off
-function getLastElement() {
+function playWithElements() {
     if(!useTile){
         var square = event.target;
-        tile.push(square.classList[1]);
         last = square.classList[1];
         // stock only the elements that I allow to take off according the tool I selected
         if((toolSelected === "shovel" && last === "grass")   
         ||(toolSelected === "shovel" && last === "dirt")){
+            tile.push(square.classList[1]);
             $(".tile").removeClass().addClass("tile " + last)
             square.classList.replace("grass", "sky");
             square.classList.replace("dirt", "sky");
         }
         if(toolSelected === "pickAxe" && last === "rock"){
+            tile.push(square.classList[1]);
             $(".tile").removeClass().addClass("tile " + last);
             square.classList.replace("rock", "sky");
         }
         if((toolSelected === "axe" && last === "leaf")
         ||(toolSelected === "axe" && last === "tree")){
+            tile.push(square.classList[1]);
             $(".tile").removeClass().addClass("tile " + last);
             square.classList.replace("tree", "sky");
             square.classList.replace("leaf", "sky");
         }
+        stockInventory()
     }
     else{
-        $(".tool").css("background-color","black")
         tile_type = $(".tile")[0].classList[1];
         if(this.classList[1] === "sky"){
             $(this).attr('class', 'pixel ' + tile_type);
@@ -76,20 +93,57 @@ function getLastElement() {
         else{
             $(this).attr('class', this.classList);
         }
-        useTile = false;
     }
 }
-$(".pixel").on("click", getLastElement);
-
-function useLastElement() {
-    var square = event.target;
-    var last = tile[tile.length-1].replace("pixel ","");
-    square.classList.replace("sky", last);
-    $(".tile."+last).removeClass(last)
-    $(".pixel.sky").off("click", useLastElement)
-}
-
+$(".pixel").on("click", playWithElements);
 $(".tile").on("click", function(){
     useTile = true;
+    $(".tool").css("background-color","white")
 })
+
+var elementSelected = "";
+function pickInventory(){
+    $(".tool").css("background-color", "white")
+    elementSelected = event.target;
+/*     element.style.border = "green" */
+    elementSelected = event.target.classList[1];
+    $(".pixel").on("click", useInventory)
+}
+$(".inventory").on("click", pickInventory)
+
+function stockInventory() {
+    counter = 0;
+    $(".inventory." + last).empty()
+    for (var i = 0; i < tile.length; i++) {
+        if(tile[i] === last){
+            counter++
+        }
+    }
+    $(".inventory." + last).append(counter)
+}
+
+function useInventory() {
+    if(tile.includes(elementSelected)){
+        counter = 0;
+        $(".pixel").off("click", playWithElements);
+        $(".inventory." + elementSelected).empty()
+        if(this.classList[1] === "sky"){
+            $(this).attr('class', 'pixel ' + elementSelected);
+            var index = tile.indexOf(elementSelected);
+            tile.splice(index, 1);
+        }
+        else{
+            $(this).attr('class', this.classList);
+        }
+        for (var i = 0; i < tile.length; i++){
+            if(tile[i] === elementSelected){
+                counter++
+            }
+        }
+    }
+    console.log(tile)
+    $(".inventory." + elementSelected).append(counter)
+}
+$(".pixel").on("click", useInventory)
+
 });
