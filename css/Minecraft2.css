@@ -51,8 +51,8 @@ button:active {
 
 .pixel {
   position: relative;
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 65px;
   background-size: cover;
   background-repeat: no-repeat;
 }
