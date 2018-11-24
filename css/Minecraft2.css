@@ -185,3 +185,31 @@ span {
 .inventory.grass {
   top: 75%;
 }
+
+@media only screen and (max-width: 1340px) {
+    .pixel {
+        height: 55px;
+        width: 55px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    .pixel {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .pixel {
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media only screen and (max-width: 710px) {
+    .pixel {
+        height: 25px;
+        width: 25px;
+    }
+}
