@@ -7,11 +7,11 @@ world = [
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
     ["sky", "sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "rock", "rock", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky",],
-    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "cloud", "cloud", "cloud", "cloud", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky",],
+    ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky",],
+    ["sky", "rock", "rock", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky",],
+    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky",],
+    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky",],
     ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
@@ -44,21 +44,25 @@ function closeTutorial() {
 }
 $(".closeTuto").on("click",closeTutorial)
 
-var toolSelected = ""  // get the tool I selected
+
+var tile = [];  // stock all the elements I took off
+var useTile = false; // if true, the user can use the last element (tile) without using tools 
+var toolSelected = ""; 
+var elementSelected = ""; // element selected in the inventory
+
+
 function pickTool(){
     useTile = false;
-    $(".pixel").off("click", useInventory)
-    $(".tool").css("background-color", "white")
-    toolSelected = event.target;
+    $(".pixel").off("click", useInventory);
+    $(".tool").css("background-color", "white");
+    toolSelected = event.target
     toolSelected.style.backgroundColor = "green"
-    toolSelected = event.target.classList[1];
-    $(".pixel").on("click", playWithElements);
+    toolSelected = event.target.classList[1]
+    $(".pixel").on("click", playWithElements)
 }
 $(".tool").on("click", pickTool)
 
 
-var useTile = false;
-var tile = [];  // stock all the elements I took off
 function playWithElements() {
     if(!useTile){
         var square = event.target;
@@ -87,8 +91,9 @@ function playWithElements() {
     }
     else{
         tile_type = $(".tile")[0].classList[1];
-        if(this.classList[1] === "sky"){
+        if(this.classList[1] === "sky" && tile_type !== undefined){
             $(this).attr('class', 'pixel ' + tile_type);
+            $(".tile").removeClass(tile_type)
         }
         else{
             $(this).attr('class', this.classList);
@@ -101,11 +106,9 @@ $(".tile").on("click", function(){
     $(".tool").css("background-color","white")
 })
 
-var elementSelected = "";
 function pickInventory(){
     $(".tool").css("background-color", "white")
     elementSelected = event.target;
-/*     element.style.border = "green" */
     elementSelected = event.target.classList[1];
     $(".pixel").on("click", useInventory)
 }
@@ -140,10 +143,9 @@ function useInventory() {
                 counter++
             }
         }
+        $(".inventory." + elementSelected).append(counter)
     }
     console.log(tile)
-    $(".inventory." + elementSelected).append(counter)
 }
 $(".pixel").on("click", useInventory)
-
 });

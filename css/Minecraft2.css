@@ -1,8 +1,8 @@
 body {
-  background-image: url(https://minecraft.net/static/pages/img/index-hero-og.088fb7996b03.jpg);
+  background-image: url("..//images/bg-minecraft.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 25px;
+  background-position-y: 7px;
 }
 
 #world {
@@ -15,7 +15,7 @@ button {
   font-size: 50px;
   margin: 30px;
   left: 31%;
-  top: 200px;
+  top: 500px;
   border-radius: 20px;
 }
 
@@ -38,6 +38,7 @@ button:active {
   height: 400px;
   font-size: 35px;
   left: 32%;
+  top: 100px;
   display: none;
 }
 
@@ -69,23 +70,23 @@ button:active {
 }
 
 .tree {
-  background-image: url("https://previews.123rf.com/images/cozyta/cozyta1403/cozyta140300280/26435767-tronc-d-arbre-gros-plan-fond-d-%C3%A9cran.jpg");
+  background-image: url("..//images/tree.png");
 }
 
 .leaf {
-  background-image: url("http://www.la-maison-vivante.fr/wp-content/uploads/2016/05/branche-d-arbre.jpg");
+  background-image: url("..//images/leaf.png");
 }
 
 .grass {
-  background-image: url("..//images/grass.png");
+  background-image: url("..//images/grass.jpeg");
 }
 
 .dirt {
-  background-image: url("http://compostiere-de-montremond.com/wp-content/uploads/2016/11/terreau.jpg");
+  background-image: url("..//images/dirt.png");
 }
 
 .rock {
-  background-image: url("../images/rocks.png");
+  background-image: url("../images/rock.png");
 }
 
 .sidebar {
@@ -106,27 +107,33 @@ button:active {
   margin: 25%;
   color: black;
   background-color: white;
-  text-align: center;
   cursor: pointer;
   font-weight: bold;
+  font-size: 12px;
 }
 
 .tool:hover {
   background-color: green;
 }
 
+span {
+  position: relative;
+  top: 55px;
+  left: 10px;
+}
+
 .tool.shovel {
-  top: 20%;
+  top: 10%;
   background-image: url(https://cdn3.iconfinder.com/data/icons/minecraft-icons/512/Iron_Shovel.png);
   background-size: cover;
 }
 .tool.pickAxe {
-  top: 30%;
+  top: 20%;
   background-image: url(http://icons.iconarchive.com/icons/chrisl21/minecraft/128/Stone-Hoe-icon.png);
   background-size: cover;
 }
 .tool.axe {
-  top: 40%;
+  top: 30%;
   background-image: url(https://cdn3.iconfinder.com/data/icons/minecraft-icons/512/Iron_Axe.png);
   background-size: cover;
 }
@@ -137,9 +144,9 @@ button:active {
   height: 50px;
   width: 50px;
   margin: 32%;
-  top: 50%;
+  top: 40%;
   cursor: pointer;
-  background-size: contain;
+  background-size: cover;
 }
 
 .inventory {
@@ -155,26 +162,26 @@ button:active {
   background-size: cover;
 }
 
-.inventory.dirt{
-    top: 60%;
-    right: 40px;
+.inventory.dirt {
+  top: 55%;
+  right: 40px;
 }
 
-.inventory.tree{
-    top: 60%;
-    left: 40px;
+.inventory.tree {
+  top: 55%;
+  left: 40px;
 }
 
-.inventory.leaf{
-    top: 70%;
-    right: 40px;
+.inventory.leaf {
+  top: 65%;
+  right: 40px;
 }
 
-.inventory.rock{
-    top: 70%;
-    left: 40px;
+.inventory.rock {
+  top: 65%;
+  left: 40px;
 }
 
-.inventory.grass{
-    top: 80%;
+.inventory.grass {
+  top: 75%;
 }
