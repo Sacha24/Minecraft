@@ -1,5 +1,5 @@
 body {
-  background-image: url("..//images/bg-minecraft.jpg");
+  background-image: url("..//images/bgMinecraft.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 7px;
@@ -24,7 +24,7 @@ button:hover {
 }
 
 button:active {
-  outline: none;
+  outline: 0;
 }
 
 .tutoContent {

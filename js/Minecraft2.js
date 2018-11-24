@@ -11,7 +11,7 @@ world = [
     ["sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky",],
     ["sky", "rock", "rock", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "leaf", "leaf", "leaf", "sky", "sky", "sky",],
     ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky",],
-    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "sky", "sky",],
+    ["sky", "rock", "sky", "rock", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "sky", "tree", "sky", "sky", "tree", "sky",],
     ["grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "grass",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
     ["dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt", "dirt",],
@@ -55,6 +55,7 @@ function pickTool(){
     useTile = false;
     $(".pixel").off("click", useInventory);
     $(".tool").css("background-color", "white");
+    $(".inventory").css("border-color", "white")
     toolSelected = event.target
     toolSelected.style.backgroundColor = "green"
     toolSelected = event.target.classList[1]
@@ -108,7 +109,9 @@ $(".tile").on("click", function(){
 
 function pickInventory(){
     $(".tool").css("background-color", "white")
+    $(".inventory").css("border-color", "white")
     elementSelected = event.target;
+    elementSelected.style.borderColor = "green"
     elementSelected = event.target.classList[1];
     $(".pixel").on("click", useInventory)
 }
