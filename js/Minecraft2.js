@@ -21,7 +21,7 @@ world = [
 
 function generateWorld (world) {
     var rows = "<div class='row justify-content-end'>";
-    world.forEach((w,i) => {  $("#world").append(rows), 
+    world.forEach((w,i) =>{$("#world").append(rows), 
         w.forEach((s, j)=>{$(".row:nth-child("+ i + ")").append("<div class='pixel " + world[i][j] + "'>")} )})
 }
 generateWorld(world);
@@ -50,7 +50,6 @@ var useTile = false; // if true, the user can use the last element (tile) withou
 var toolSelected = ""; 
 var elementSelected = ""; // element selected in the inventory
 
-
 function pickTool(){
     useTile = false;
     $(".pixel").off("click", useInventory);
@@ -62,7 +61,6 @@ function pickTool(){
     $(".pixel").on("click", playWithElements)
 }
 $(".tool").on("click", pickTool)
-
 
 function playWithElements() {
     if(!useTile){
